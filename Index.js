@@ -26,9 +26,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // MongoDB connection
-mongoose.connect('mongodb+srv://nareshs2812:2812@cluster0.l37bxbu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/Main_Blog', {
-    useUnifiedTopology: true,
-}).then(() => console.log('Connected to MongoDB'))
+mongoose.connect('mongodb+srv://nareshs2812:2812@cluster0.l37bxbu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/Main_Blog').then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Could not connect to MongoDB:', err));
 
 // User schema and model
