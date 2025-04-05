@@ -6,6 +6,12 @@ const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+const allowedOrigins = [
+    "http://localhost:3000",
+    "https://blog-client-sandy-five.vercel.app"
+  ];
+  
+
 const corsOptions = {
     origin: function (origin, callback) {
       if (
@@ -20,7 +26,7 @@ const corsOptions = {
     },
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
-  };
+  };    
 
 app.use(cors(corsOptions));
 app.use(express.json());
