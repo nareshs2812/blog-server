@@ -6,10 +6,23 @@ const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-app.use(cors({
-    origin: 'http://localhost:3000',
-    credentials: true
-}));
+const corsOptions = {
+    origin: function (origin, callback) {
+      if (
+        !origin ||
+        allowedOrigins.includes(origin) ||
+        origin.endsWith(".vercel.app")
+      ) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  };
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // MongoDB connection
